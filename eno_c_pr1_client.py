@@ -8,7 +8,7 @@ serverPort = int(input("Enter server port: "))
 
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 clientSocket.connect((serverName, serverPort))
-clientSocket.settimeout(1)
+clientSocket.settimeout(1) # sets 1 second timeout
 
 def getMonth(mon):
     if mon == 1:

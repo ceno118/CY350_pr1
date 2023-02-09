@@ -4,12 +4,11 @@ import socket
 import random
 
 serverPort = int(input("Enter server port: "))
+msg = input("What message would you like to send back?: ") # should be "pong" but other inputs demonstrate client's error checking
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 serverSocket.bind(('', serverPort))
 
 print("The server is ready to receive")
-
-# he doesn't want more than 30% packet loss, so make it random unless 3 have already been dropped
 
 dropped = 0
 
@@ -32,8 +31,8 @@ while True:
     if dropped < 3 and decideLoss(): # checks if we've hit 30% loss
         print("drop") # not necessary, but helps the user see when things are dropped
 
-    elif decoded[:4] == "ping":
-        modifiedMessage = "pong" + message[4:].decode()
+    elif decoded[:4] == "ping": # checks that the received message is correct
+        modifiedMessage = msg + message[4:].decode() # modifies the message to send back
         serverSocket.sendto(modifiedMessage.encode(), clientAddress)
     
     else:
