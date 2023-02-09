@@ -57,7 +57,7 @@ for i in range(1,11):
         rtt = (time.time() - send_time) * 1000 # converts time to milliseconds
         RTTs.append(rtt)
         if modifiedMessage[:8] == "pong "+ message[5:8]: #makes sure the response message and seq number are correct
-            print('From Server: ' + modifiedMessage + " RTT: " + str(rtt) + " seconds")
+            print('From Server: ' + modifiedMessage + " RTT: " + str(rtt) + " milliseconds")
         else:
             print("Incorrect response from server: ", modifiedMessage)
         received += 1
