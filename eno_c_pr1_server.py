@@ -28,7 +28,7 @@ while True:
     decoded = message.decode()
     print("Message from: ", clientAddress, ": ", decoded)
 
-    if dropped < 3 and decideLoss(): # checks if we've hit 30% loss
+    if dropped < 3 and decideLoss(): # checks if we've hit 30% loss (assuming 10 messages)
         print("drop") # not necessary, but helps the user see when things are dropped
 
     elif decoded[:4] == "ping": # checks that the received message is correct
